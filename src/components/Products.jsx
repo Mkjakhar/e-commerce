@@ -99,11 +99,11 @@ const Products = () => {
                 className="fs-4"
                 onClick={() => settheme(!theme)}
               /> */}
-              <BsFillSunFill
+              {/* <BsFillSunFill
                 style={{ cursor: "pointer" }}
                 className="fs-4"
                 onClick={() => settheme(!theme)}
-              />
+              /> */}
               <Link to="/cart">
                 <button className="cart_btn position-relative">
                   <TiShoppingCart className="fs-2" />{" "}
