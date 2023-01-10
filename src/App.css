@@ -1,0 +1,59 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none !important;
+  box-sizing: border-box;
+  list-style: none !important;
+  font-family: "Poppins", sans-serif;
+}
+
+.product_cards {
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+}
+.order_btn {
+  padding: 7px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 1.9px solid #ff5300;
+  transition: linear 200ms;
+  color: #ff5300;
+  font-weight: 500;
+}
+.order_btn_dark {
+  color: white;
+}
+.order_btn:hover {
+  background-color: #ff5300;
+  color: white;
+}
+.bg_primary {
+  background-color: #fff7f4;
+}
+.cart_btn {
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.DarkMode {
+  background-color: #000;
+  color: white !important;
+}
+.LightTheme {
+  background-color: #fff;
+  color: #000 !important;
+}
+.scroll_hide::-webkit-scrollbar {
+  display: none;
+}
+.box_shodow {
+  box-shadow: 1px 1px 20px rgb(172, 167, 167);
+}
+.search_bar {
+  border: 1px solid;
+  outline: unset;
+  padding: 4px 12px;
+}
