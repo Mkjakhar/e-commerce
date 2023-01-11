@@ -1,4 +1,4 @@
-import demo from "./assets/png/demo.jpg";
+import demo from "./assets/png/m-shop.webp";
 const product = [
   {
     id: 1,

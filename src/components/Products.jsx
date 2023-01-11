@@ -1,22 +1,16 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Badge, Col, Container, Row } from "react-bootstrap";
+import React, { useContext, useState } from "react";
+import { Badge, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { TiShoppingCart } from "react-icons/ti";
 import { CartContext } from "../context/Context";
 import HomepageCards from "../components/HomepageCards";
-import { BsSun, BsFillSunFill } from "react-icons/bs";
+import { BsFillSunFill } from "react-icons/bs";
 
 const Products = () => {
   // product data with context
   const { productsData, count, allData, settheme, theme, filterItems } =
     useContext(CartContext);
 
-  const [renderTime, setrenderTime] = useState(0);
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setrenderTime(renderTime + 1);
-  //   }, 1000);
-  // });
   // category wise
   const updatedData = [...new Set(productsData.map((elem) => elem.category))];
   const [search, setSearch] = useState();
@@ -28,7 +22,7 @@ const Products = () => {
       return newProduct;
     }
   });
-  console.log(filteredProducts);
+  // console.log(filteredProducts);
   return (
     <>
       <section>
@@ -94,16 +88,11 @@ const Products = () => {
               </div>
             </form>
             <div className="d-flex align-items-center gap-4">
-              {/* <BsSun
+              <BsFillSunFill
                 style={{ cursor: "pointer" }}
                 className="fs-4"
                 onClick={() => settheme(!theme)}
-              /> */}
-              {/* <BsFillSunFill
-                style={{ cursor: "pointer" }}
-                className="fs-4"
-                onClick={() => settheme(!theme)}
-              /> */}
+              />
               <Link to="/cart">
                 <button className="cart_btn position-relative">
                   <TiShoppingCart className="fs-2" />{" "}
@@ -121,7 +110,6 @@ const Products = () => {
         </Container>
         <section className={`${theme ? "bg-white py-3" : "bg-black py-3"}`}>
           <Container className="w-100 overflow-auto scroll_hide">
-            {" "}
             <div className="d-flex align-items-center gap-4 justify -content-between">
               {updatedData.map((value, i) => {
                 return (
