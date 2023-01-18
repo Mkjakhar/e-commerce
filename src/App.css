@@ -23,6 +23,10 @@
   color: #ff5300;
   font-weight: 500;
 }
+.order_btn:focus {
+  background-color: #ff5300;
+  color: white;
+}
 .order_btn_dark {
   color: white;
 }
@@ -56,4 +60,20 @@
   border: 1px solid;
   outline: unset;
   padding: 4px 12px;
+}
+.form_box {
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 1px 1px 20px rgb(172, 167, 167);
+  padding: 48px;
+  border-radius: 12px;
+}
+
+.box {
+  width: 400px;
+  height: 400px;
+  background: red;
+  border: 1px solid black;
+  border-radius: 24px;
+  clip-path: polygon(100% 0, 100% 72%, 72% 100%, 0 100%, 0 0);
 }

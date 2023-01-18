@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Container, Row, Col, Badge } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { TiShoppingCart } from "react-icons/ti";
 import { AiFillMinusCircle, AiFillPlusCircle } from "react-icons/ai";
 import { CartContext } from "../context/Context";
+import emptycart from "../assets/png/empty-cart.webp";
 const Cart = () => {
   const {
     cartData,
@@ -13,9 +15,9 @@ const Cart = () => {
     DeleteItems,
     count,
     totalPrice,
-    theme,
     clearCart,
   } = useContext(CartContext);
+  const [show, setShow] = useState(false);
   return (
     <>
       <div className="flex-column vh-100 d-flex">
@@ -97,10 +99,9 @@ const Cart = () => {
                 Clear Cart
               </button>
               <button
+                onClick={() => setShow(true)}
                 className={`${
-                  theme
-                    ? "order_btn px-4 text-center"
-                    : "order_btn text-center px-4 order_btn_dark"
+                  cartData < 1 ? "d-none" : "order_btn text-center px-4"
                 }`}
               >
                 Place Order
@@ -109,6 +110,15 @@ const Cart = () => {
           </Container>
         </div>
       </div>
+      <Modal centered show={show} onHide={() => setShow(false)}>
+        <Modal.Header closeButton></Modal.Header>
+        <Modal.Body>
+          <div>
+            <p>No. of Items ordered {count}</p>
+            <p className="fw-bold">Total Price : ${totalPrice}</p>
+          </div>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

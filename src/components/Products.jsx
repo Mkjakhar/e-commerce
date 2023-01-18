@@ -5,14 +5,23 @@ import { TiShoppingCart } from "react-icons/ti";
 import { CartContext } from "../context/Context";
 import HomepageCards from "../components/HomepageCards";
 import { BsFillSunFill } from "react-icons/bs";
+import product from "../productData";
 
+const updatedData = [...new Set(product.map((elem) => elem.category))];
 const Products = () => {
   // product data with context
-  const { productsData, count, allData, settheme, theme, filterItems } =
-    useContext(CartContext);
-
+  const {
+    productsData,
+    count,
+    allData,
+    userDeatil,
+    settheme,
+    theme,
+    filterItems,
+    afterLogin,
+    setafterLogin,
+  } = useContext(CartContext);
   // category wise
-  const updatedData = [...new Set(productsData.map((elem) => elem.category))];
   const [search, setSearch] = useState();
   const filteredProducts = productsData.filter((newProduct) => {
     if (
@@ -22,7 +31,14 @@ const Products = () => {
       return newProduct;
     }
   });
-  // console.log(filteredProducts);
+  const searchitems = (e) => {
+    // setSearch(e.target.value.toLowerCase());
+    if (e.target.value > 0) {
+      return setSearch(e.target.value.toLowerCase()), console.log("done");
+    } else {
+      return console.log("not");
+    }
+  };
   return (
     <>
       <section>
@@ -39,9 +55,7 @@ const Products = () => {
               onSubmit={(e) => e.preventDefault()}
             >
               <input
-                onChange={(e) => {
-                  setSearch(e.target.value.toLowerCase());
-                }}
+                onChange={searchitems}
                 className="rounded-2 text-black search_bar fs-6 w-100"
                 type="search"
                 placeholder="Search.............."
@@ -58,29 +72,6 @@ const Products = () => {
                       </div>
                       <div className="col-sm-10">
                         <p className="fw-bold">{ele.tittle}</p>
-                        {/* <div className="d-flex justify-content-between align-items-center">
-                          <div className="d-flex gap-2 align-items-center">
-                            {" "}
-                            <button
-                              onClick={() => decrease(id, price)}
-                              className="fs-3 bg-transparent border-0"
-                            >
-                              <AiFillMinusCircle />
-                            </button>
-                            <p className="mb-0">Quantity: {quantity}</p>
-                            <button
-                              onClick={() => increase(id, price)}
-                              className="fs-3 bg-transparent border-0"
-                            >
-                              <AiFillPlusCircle />
-                            </button>
-                          </div>
-                          <MdDelete
-                            style={{ cursor: "pointer" }}
-                            className="fs-2"
-                            onClick={() => DeleteItems(id, quantity, price)}
-                          />
-                        </div> */}
                       </div>
                     </Row>
                   );
@@ -88,6 +79,18 @@ const Products = () => {
               </div>
             </form>
             <div className="d-flex align-items-center gap-4">
+              {afterLogin ? (
+                <Link to="/LoginPage">
+                  <button className="btn btn-primary">Login</button>
+                </Link>
+              ) : (
+                <button
+                  onClick={() => setafterLogin(true)}
+                  className="btn btn-primary"
+                >
+                  Logout
+                </button>
+              )}
               <BsFillSunFill
                 style={{ cursor: "pointer" }}
                 className="fs-4"
@@ -139,9 +142,9 @@ const Products = () => {
             </div>
           </Container>
         </section>
-
         <section className={`${theme ? "bg_primary py-4" : "bg-black py-4"}`}>
           <Container>
+            {afterLogin ? "" : <h1>Welcome {userDeatil.UserName}</h1>}
             <Row>
               {productsData.map((value) => {
                 return <HomepageCards key={value.id} {...value} />;

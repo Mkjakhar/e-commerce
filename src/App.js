@@ -6,6 +6,7 @@ import Products from "./components/Products";
 import { Route, Switch } from "react-router-dom";
 import Cart from "./components/Cart";
 import { CartContext } from "./context/Context";
+import LoginPage from "./components/LoginPage";
 function App() {
   const { theme } = useContext(CartContext);
   return (
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Products} />
         <Route exact path="/cart" component={Cart} />
+        <Route exact path="/LoginPage" component={LoginPage} />
       </Switch>
     </div>
   );
